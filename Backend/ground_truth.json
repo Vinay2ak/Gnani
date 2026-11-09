@@ -1,0 +1,108 @@
+{
+    "quite1": {
+        "condition": "clean",
+        "transcript_said": "Script A",
+        "expected": {
+            "vehicle_drivable": "FALSE",
+            "towing_required": "TRUE",
+            "damage_zones": [
+                "Front Cooling System (Radiator)",
+                "Front Suspension (Control Arm / Tie-Rod)"
+            ],
+            "third_party_or_injury": "UNKNOWN"
+        }
+    },
+    "quite2": {
+        "condition": "clean",
+        "transcript_said": "Script B",
+        "expected": {
+            "vehicle_drivable": "TRUE",
+            "towing_required": "FALSE",
+            "damage_zones": [
+                "Front Bumper / Bonnet",
+                "Headlight"
+            ],
+            "third_party_or_injury": "FALSE"
+        }
+    },
+    "quite3": {
+        "condition": "clean",
+        "transcript_said": "Script C",
+        "expected": {
+            "vehicle_drivable": "TRUE",
+            "towing_required": "UNKNOWN",
+            "damage_zones": [
+                "Rear (Boot / Dickey)"
+            ],
+            "third_party_or_injury": "TRUE"
+        }
+    },
+    "quite4": {
+        "condition": "clean",
+        "transcript_said": "Script D",
+        "expected": {
+            "vehicle_drivable": "FALSE",
+            "towing_required": "TRUE",
+            "damage_zones": [
+                "Engine",
+                "Wheel / Tyre"
+            ],
+            "third_party_or_injury": "UNKNOWN"
+        }
+    },
+    "noisy1": {
+        "condition": "noisy",
+        "transcript_said": "Script A",
+        "expected": {
+            "vehicle_drivable": "FALSE",
+            "towing_required": "TRUE",
+            "damage_zones": [
+                "Front Cooling System (Radiator)",
+                "Front Suspension (Control Arm / Tie-Rod)"
+            ],
+            "third_party_or_injury": "UNKNOWN"
+        }
+    },
+    "noisy2": {
+        "condition": "noisy",
+        "transcript_said": "Script B",
+        "expected": {
+            "vehicle_drivable": "TRUE",
+            "towing_required": "FALSE",
+            "damage_zones": [
+                "Front Bumper / Bonnet",
+                "Headlight"
+            ],
+            "third_party_or_injury": "FALSE"
+        }
+    },
+    "noisy3": {
+        "condition": "noisy",
+        "transcript_said": "Script C",
+        "expected": {
+            "vehicle_drivable": "TRUE",
+            "towing_required": "UNKNOWN",
+            "damage_zones": [
+                "Rear (Boot / Dickey)"
+            ],
+            "third_party_or_injury": "TRUE"
+        }
+    },
+    "noisy4": {
+        "condition": "noisy",
+        "transcript_said": "Script D",
+        "expected": {
+            "vehicle_drivable": "FALSE",
+            "towing_required": "TRUE",
+            "damage_zones": [
+                "Engine",
+                "Wheel / Tyre"
+            ],
+            "third_party_or_injury": "UNKNOWN"
+        }
+    },
+    "held1": {"condition": "clean", "transcript_said": "Script E", "expected": {"vehicle_drivable": "FALSE", "towing_required": "TRUE", "damage_zones": ["Suspension (Leaf Spring)", "Wheel / Tyre"], "third_party_or_injury": "FALSE"}},
+    "held2": {"condition": "noisy", "transcript_said": "Script F", "expected": {"vehicle_drivable": "UNKNOWN", "towing_required": "UNKNOWN", "damage_zones": ["Headlight"], "third_party_or_injury": "UNKNOWN"}},
+    "held3": {"condition": "clean", "transcript_said": "Script G", "expected": {"vehicle_drivable": "TRUE", "towing_required": "UNKNOWN", "damage_zones": ["Front Bumper / Bonnet"], "third_party_or_injury": "TRUE"}},
+    "held4": {"condition": "noisy", "transcript_said": "Script H", "expected": {"vehicle_drivable": "FALSE", "towing_required": "TRUE", "damage_zones": ["Door", "Wheel / Tyre"], "third_party_or_injury": "TRUE"}}
+}

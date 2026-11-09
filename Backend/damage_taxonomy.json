@@ -1,0 +1,20 @@
+{
+  "_note": "Draft. Har alias kisi mechanic/surveyor se verify karo.",
+  "zones": {
+    "Front Cooling System (Radiator)": ["radiator", "रेडिएटर", "rediator"],
+    "Front Suspension (Control Arm / Tie-Rod)": ["tie-rod", "tie rod", "control arm", "टाई रॉड"],
+    "Suspension (Leaf Spring)": ["kamani", "कमानी", "leaf spring"],
+    "Front Bumper / Bonnet": ["bumper", "bonnet", "hood", "बम्पर", "बोनट"],
+    "Headlight": ["headlight", "हेडलाइट"],
+    "Windshield": ["windshield", "windscreen", "शीशा", "seesha"],
+    "Wheel / Tyre": ["tyre", "tire", "pahiya", "पहिया", "टायर"],
+    "Door": ["door", "darwaza", "दरवाज़ा"],
+    "Rear (Boot / Dickey)": ["dickey", "dikki", "digi", "boot", "डिग्गी"],
+    "Engine": ["engine", "इंजन"],
+    "Chassis / Axle": ["chassis", "axle", "एक्सल"]
+  },
+  "unverified_slang": {
+    "chimta": "kis part ko kehte hain, mechanic se pucho. Abhi kisi zone se map nahi kiya."
+  }
+}
+
