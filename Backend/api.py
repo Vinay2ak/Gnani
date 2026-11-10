@@ -211,7 +211,17 @@ def readback_claim(claim_id: str, voice: Optional[str] = "Nalini"):
     if claim_id not in claims_db:
         raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found")
 
-    selected_voice = "Deepak" if voice and voice.strip().lower() in ["deepak", "male", "man", "purush"] else "Nalini"
+    v_clean = (voice or "").strip().lower()
+    if v_clean in ["gaurav", "male", "man", "purush", "deepak"]:
+        selected_voice = "Gaurav"
+    elif v_clean in ["vikrant"]:
+        selected_voice = "Vikrant"
+    elif v_clean in ["hemraj"]:
+        selected_voice = "Hemraj"
+    elif v_clean in ["kaveri"]:
+        selected_voice = "Kaveri"
+    else:
+        selected_voice = "Nalini"
     voice_slug = selected_voice.lower()
     cache_file = Path("readback") / f"{claim_id}_{voice_slug}.wav"
 

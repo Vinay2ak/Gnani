@@ -15,7 +15,7 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
   const [isApproving, setIsApproving] = useState<boolean>(false);
   const [isLoadingAudio, setIsLoadingAudio] = useState<boolean>(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
-  const [selectedVoice, setSelectedVoice] = useState<'Nalini' | 'Deepak'>('Nalini');
+  const [selectedVoice, setSelectedVoice] = useState<'Nalini' | 'Gaurav' | 'Vikrant'>('Nalini');
   const [actionError, setActionError] = useState<string | null>(null);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -290,7 +290,7 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
           <select
             value={selectedVoice}
             onChange={(e) => {
-              const nextVoice = e.target.value as 'Nalini' | 'Deepak';
+              const nextVoice = e.target.value as 'Nalini' | 'Gaurav' | 'Vikrant';
               if (isPlayingAudio && audioRef.current) {
                 audioRef.current.pause();
                 setIsPlayingAudio(false);
@@ -302,8 +302,11 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
             <option value="Nalini" className="bg-surface text-text">
               Female (Nalini)
             </option>
-            <option value="Deepak" className="bg-surface text-text">
-              Male (Deepak)
+            <option value="Gaurav" className="bg-surface text-text">
+              Male (Gaurav - Deep)
+            </option>
+            <option value="Vikrant" className="bg-surface text-text">
+              Male (Vikrant)
             </option>
           </select>
         </div>
@@ -315,10 +318,10 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
           className="border border-line bg-surface hover:bg-panel text-text font-medium text-[13px] py-1.5 px-3.5 rounded-[4px] cursor-pointer active:translate-y-[1px] disabled:opacity-40 disabled:cursor-not-allowed select-none"
         >
           {isLoadingAudio
-            ? `Generating ${selectedVoice === 'Deepak' ? 'Male' : 'Female'} audio...`
+            ? `Generating ${selectedVoice === 'Nalini' ? 'Female' : 'Male'} audio...`
             : isPlayingAudio
             ? 'Stop read-back'
-            : `Play read-back (${selectedVoice === 'Deepak' ? 'Male' : 'Female'})`}
+            : `Play read-back (${selectedVoice === 'Nalini' ? 'Female' : 'Male'})`}
         </button>
       </section>
     </article>
