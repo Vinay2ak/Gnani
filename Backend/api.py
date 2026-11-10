@@ -15,14 +15,52 @@ from tts import generate_readback_sentence, synthesize_readback
 
 app = FastAPI(title="Bima-Setu (FNOL Co-Pilot) API", version="1.0.0")
 
-# Enable CORS strictly for local Vite frontend
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Enable CORS: allows deployed frontend in production or specific origins if configured
+is_render = os.environ.get("RENDER") == "true" or "PORT" in os.environ
+env_origins = os.environ.get("ALLOWED_ORIGINS")
+
+if env_origins:
+    origins = [o.strip() for o in env_origins.split(",") if o.strip()]
+    if "*" in origins:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=False,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+    else:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=origins + ["http://localhost:5173", "http://127.0.0.1:5173"],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+elif is_render:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+@app.get("/")
+def health_check():
+    return {"status": "ok", "service": "Bima-Setu (FNOL Co-Pilot) API"}
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 # In-memory claims storage (no database)
 claims_db: dict[str, dict] = {}
@@ -187,4 +225,5 @@ def readback_claim(claim_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("api:app", host="0.0.0.0", port=port, reload=True)

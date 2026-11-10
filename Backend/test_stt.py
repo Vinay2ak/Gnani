@@ -3,12 +3,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
-KEY = os.environ["GNANI_API_KEY"]
+KEY = os.environ.get("GNANI_API_KEY", "")
 
 def transcribe(path, model, lang="hi-IN"):
     out = Path("transcripts") / f"{Path(path).stem}.{model}.json"
     if out.exists():
         return json.loads(out.read_text(encoding="utf-8"))
+    
+    key = os.environ.get("GNANI_API_KEY", KEY)
+    if not key:
+        raise ValueError("GNANI_API_KEY environment variable is not set")
+    
     data = {"language_code": lang}
     if model == "prisma-v3.0":
         data["model"] = model
