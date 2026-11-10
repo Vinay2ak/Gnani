@@ -13,7 +13,13 @@ from extract import extract_fnol
 from policies import lookup_policy
 from tts import generate_readback_sentence, synthesize_readback
 
-app = FastAPI(title="Bima-Setu (FNOL Co-Pilot) API", version="1.0.0")
+app = FastAPI(
+    title="Bima-Setu (FNOL Co-Pilot) API",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json"
+)
 
 # Enable CORS: allows deployed frontend in production or specific origins if configured
 is_render = os.environ.get("RENDER") == "true" or "PORT" in os.environ
