@@ -4,6 +4,7 @@ An AI-assisted First Notice of Loss (FNOL) co-pilot for motor insurance claims. 
 
 ---
 
+
 ## Problem
 
 Following a road accident, drivers call insurance claims helplines in high-stress states, speaking colloquial Hindi-English mixed with local mechanical slang (e.g., *kamani*, *dickey*, *tie-rod*).
