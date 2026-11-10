@@ -1,0 +1,8 @@
+node_modules
+Frontend/node_modules
+dist
+Frontend/dist
+__pycache__
+*.pyc
+.env
+.DS_Store
