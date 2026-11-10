@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b75f-9a41-706d-aca5-307076f0378f",
+  "transcript": "Hello, मेरा accident हो गया है, headlight टूट गया है, मुझे जल्दी मदद चाहिए। बाकी मैं अभी देख नहीं पाया।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.4080185890197754,
+  "end_to_end_latency": 0.4091603755950928,
+  "detected_language_code": "hi-IN"
+}

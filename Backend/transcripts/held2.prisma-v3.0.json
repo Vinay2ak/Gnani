@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b760-7107-7295-8cb7-ff072cb8d300",
+  "transcript": "सर, highway पे truck ने side shift कर दिया। अ driver side का door damage हुआ है और tyre burst हो गया, गाड़ी हिल नहीं रही। belt bed भेज दीजिए।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.37818384170532227,
+  "end_to_end_latency": 0.3792593479156494,
+  "detected_language_code": "hi-IN"
+}

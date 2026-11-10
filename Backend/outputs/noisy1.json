@@ -1,0 +1,20 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "गाड़ी बिल्कुल start नहीं हो रही, चलने लायक नहीं है",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [
+    {
+      "zone": "Front Cooling System (Radiator)",
+      "evidence": "radiator फट गया है"
+    }
+  ],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.553,
+    "llm_seconds": 1.387,
+    "total_seconds": 1.94
+  },
+  "transcript": "Hello sir, मेरी गाड़ी का accident हो गया है। highway पे divider से टकरा गई, radiator फट गया है और पानी बह रहा है। tyre road भी मुर गया है, गाड़ी बिल्कुल start नहीं हो रही, चलने लायक नहीं है। तो करनी पड़ेगी, जल्दी कोई भेजिए।"
+}

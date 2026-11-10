@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1ada8-bcee-7c89-b9de-99b379b0ed1a",
+  "transcript": "Hello, हाँ sir जी, गाड़ी का accident हो गया है। गाड़ी highway पे चढ़ गई है, पूरी highway के जो border है उसपे चढ़ गई है।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.45967674255371094,
+  "end_to_end_latency": 0.4607822895050049,
+  "detected_language_code": "hi-IN"
+}

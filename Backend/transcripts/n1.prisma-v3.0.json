@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1ada7-6025-7543-b929-971e47ee8ec1",
+  "transcript": "Hello सर जी, गाड़ी का accident हो गया है and गाड़ी। highway के highway का जो barrier होता है, उसपे पूरा चढ़ गई है। खत्म हो चुकी है, पूरी तरह से पलट चुकी है।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.3586454391479492,
+  "end_to_end_latency": 0.35977721214294434,
+  "detected_language_code": "hi-IN"
+}

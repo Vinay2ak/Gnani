@@ -1,0 +1,20 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "गाड़ी बंद हो चुकी है",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [
+    {
+      "zone": "Front Cooling System (Radiator)",
+      "evidence": "radiator खराब हो चुका है"
+    }
+  ],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.314,
+    "llm_seconds": 0.001,
+    "total_seconds": 0.315
+  },
+  "transcript": "Hello, हाँ sir जी, गाड़ी का radiator खराब हो चुका है और। गाड़ी बंद हो चुकी है।"
+}

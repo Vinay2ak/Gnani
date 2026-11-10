@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b5fe-fff7-7926-b2a3-148b00a052ae",
+  "transcript": "Sir, गाड़ी का engine अचानक से बंद हो गया है और आगे का tyre भी फट गया है। गाड़ी एक... inch pitch, 1 inch भी नहीं ले रही, सड़क के बीच में खड़ी है। crane बिछानी पड़ेगी।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.47779011726379395,
+  "end_to_end_latency": 0.4788811206817627,
+  "detected_language_code": "hi-IN"
+}

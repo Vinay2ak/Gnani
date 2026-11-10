@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1ad95-0fc9-7002-84b3-88b45ae8061a",
+  "transcript": "Hello, हाँ sir जी, गाड़ी का radiator खराब हो चुका है और। गाड़ी बंद हो चुकी है।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.31235480308532715,
+  "end_to_end_latency": 0.3135988712310791,
+  "detected_language_code": "hi-IN"
+}

@@ -1,0 +1,24 @@
+{
+  "vehicle_drivable": "TRUE",
+  "vehicle_drivable_evidence": "गाड़ी बिल्कुल ठीक है। चल रही है",
+  "towing_required": "FALSE",
+  "towing_evidence": "तो। की जरूरत नहीं",
+  "damage_zones": [
+    {
+      "zone": "Front Bumper / Bonnet",
+      "evidence": "bumper और head light टूट गया है"
+    },
+    {
+      "zone": "Headlight",
+      "evidence": "bumper और head light टूट गया है"
+    }
+  ],
+  "third_party_or_injury": "FALSE",
+  "third_party_evidence": "कोई दूसरी गाड़ी involve involve involve नहीं थी और किसी को चोट नहीं लगी",
+  "timings": {
+    "stt_seconds": 0.599,
+    "llm_seconds": 1.376,
+    "total_seconds": 1.975
+  },
+  "transcript": "सर, छोटा सा accident हुआ है। bumper और head light टूट गया है, टूट गए हैं, लेकिन गाड़ी बिल्कुल ठीक है। चल रही है, radiator को कुछ नहीं हुआ। मैं खुद चला के workshop ले जाऊँगा तो। की जरूरत नहीं, कोई दूसरी गाड़ी involve involve involve नहीं थी और किसी को चोट नहीं लगी।"
+}

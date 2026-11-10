@@ -1,0 +1,15 @@
+{
+  "vehicle_drivable": "UNKNOWN",
+  "vehicle_drivable_evidence": "",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.36,
+    "llm_seconds": 2.506,
+    "total_seconds": 2.866
+  },
+  "transcript": "Hello सर जी, गाड़ी का accident हो गया है and गाड़ी। highway के highway का जो barrier होता है, उसपे पूरा चढ़ गई है। खत्म हो चुकी है, पूरी तरह से पलट चुकी है।"
+}

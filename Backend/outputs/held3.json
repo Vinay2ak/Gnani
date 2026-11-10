@@ -1,0 +1,24 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "truck बिल्कुल नहीं चल रहा",
+  "towing_required": "TRUE",
+  "towing_evidence": "crane भिजवा दीजिए",
+  "damage_zones": [
+    {
+      "zone": "Suspension (Leaf Spring)",
+      "evidence": "कमानी टूट गई है"
+    },
+    {
+      "zone": "Wheel / Tyre",
+      "evidence": "आगे का पहिया टेढ़ा हो गया है"
+    }
+  ],
+  "third_party_or_injury": "FALSE",
+  "third_party_evidence": "किसी। को चोट नहीं लगे",
+  "timings": {
+    "stt_seconds": 0.421,
+    "llm_seconds": 1.374,
+    "total_seconds": 1.795
+  },
+  "transcript": "सर, मेरा truck की कमानी टूट गई है और आगे का पहिया टेढ़ा हो गया है। truck बिल्कुल नहीं चल रहा, crane भिजवा दीजिए। कोई दूसरी गाड़ी नहीं थी और किसी। को चोट नहीं लगे।"
+}

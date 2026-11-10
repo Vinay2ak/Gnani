@@ -1,0 +1,24 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "गाड़ी हिल नहीं रही",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [
+    {
+      "zone": "Door",
+      "evidence": "driver side का door damage हुआ है"
+    },
+    {
+      "zone": "Wheel / Tyre",
+      "evidence": "tyre burst हो गया"
+    }
+  ],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.379,
+    "llm_seconds": 1.705,
+    "total_seconds": 2.084
+  },
+  "transcript": "सर, highway पे truck ने side shift कर दिया। अ driver side का door damage हुआ है और tyre burst हो गया, गाड़ी हिल नहीं रही। belt bed भेज दीजिए।"
+}

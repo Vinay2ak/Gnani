@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b760-9331-7b88-b041-c990eb3a8a51",
+  "transcript": "Sir, गाड़ी का engine ठीक है, चल रही है, सिर्फ bonnet दब गया है दूसरी गाड़ी वाली। को चोट लगी है, ambulance बुलवा दीजिए।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.3682124614715576,
+  "end_to_end_latency": 0.36934423446655273,
+  "detected_language_code": "hi-IN"
+}

@@ -1,0 +1,15 @@
+{
+  "vehicle_drivable": "TRUE",
+  "vehicle_drivable_evidence": "गाड़ी चल रही है",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [],
+  "third_party_or_injury": "TRUE",
+  "third_party_evidence": "पीछे वाली गाड़ी के driver को चोट लगी है। खून आ रहा है",
+  "timings": {
+    "stt_seconds": 0.542,
+    "llm_seconds": 1.178,
+    "total_seconds": 1.72
+  },
+  "transcript": "सर, पीछे से एक गाड़ी ने जोर से टक्कर मारी, मेरी गाड़ी की डगी। पिचक गई है, गाड़ी चल रही है, पर पीछे वाली गाड़ी के driver को चोट लगी है। खून आ रहा है।"
+}

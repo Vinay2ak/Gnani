@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b5fe-dcc6-77e7-92ea-6c7dbb31a523",
+  "transcript": "सर, पीछे से एक गाड़ी ने जोर से टक्कर मारी, मेरी गाड़ी की डिक्की पीछे पिचक गई है। गाड़ी चल रही है, पर पीछे वाली गाड़ी के driver को चोट लगी है, खून आ रहा।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.5250623226165771,
+  "end_to_end_latency": 0.526177167892456,
+  "detected_language_code": "hi-IN"
+}

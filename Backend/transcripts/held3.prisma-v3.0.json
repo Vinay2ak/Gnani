@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b760-8170-7aa2-896b-091445b46d3f",
+  "transcript": "सर, मेरा truck की कमानी टूट गई है और आगे का पहिया टेढ़ा हो गया है। truck बिल्कुल नहीं चल रहा, crane भिजवा दीजिए। कोई दूसरी गाड़ी नहीं थी और किसी। को चोट नहीं लगे।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.4194777011871338,
+  "end_to_end_latency": 0.421079158782959,
+  "detected_language_code": "hi-IN"
+}

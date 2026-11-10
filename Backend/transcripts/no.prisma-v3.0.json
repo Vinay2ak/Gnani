@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1ada8-666c-748b-b600-8053fcfc61fa",
+  "transcript": "Hello sir, गाड़ी का radiator खराब हो गया है, आकर। accident हो गया है गाड़ी का।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.30457162857055664,
+  "end_to_end_latency": 0.3056764602661133,
+  "detected_language_code": "hi-IN"
+}

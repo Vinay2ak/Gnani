@@ -1,0 +1,24 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "गाड़ी बीच गाड़ी 1 inch भी नहीं हिल रही",
+  "towing_required": "TRUE",
+  "towing_evidence": "crane भिजवानी पड़ेगी",
+  "damage_zones": [
+    {
+      "zone": "Engine",
+      "evidence": "गाड़ी का engine अचानक बंद हो गया है"
+    },
+    {
+      "zone": "Wheel / Tyre",
+      "evidence": "आगे का tyre भी फट गया है"
+    }
+  ],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.561,
+    "llm_seconds": 1.618,
+    "total_seconds": 2.179
+  },
+  "transcript": "Sir, गाड़ी का engine अचानक बंद हो गया है और आगे का tyre भी फट गया है। गाड़ी बीच गाड़ी 1 inch भी नहीं हिल रही, सड़क के बीच में खड़ी है। crane भिजवानी पड़ेगी।"
+}

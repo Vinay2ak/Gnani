@@ -1,0 +1,24 @@
+{
+  "vehicle_drivable": "FALSE",
+  "vehicle_drivable_evidence": "गाड़ी एक... inch pitch, 1 inch भी नहीं ले रही",
+  "towing_required": "TRUE",
+  "towing_evidence": "crane बिछानी पड़ेगी",
+  "damage_zones": [
+    {
+      "zone": "Engine",
+      "evidence": "गाड़ी का engine अचानक से बंद हो गया है"
+    },
+    {
+      "zone": "Wheel / Tyre",
+      "evidence": "आगे का tyre भी फट गया है"
+    }
+  ],
+  "third_party_or_injury": "UNKNOWN",
+  "third_party_evidence": "",
+  "timings": {
+    "stt_seconds": 0.479,
+    "llm_seconds": 1.208,
+    "total_seconds": 1.687
+  },
+  "transcript": "Sir, गाड़ी का engine अचानक से बंद हो गया है और आगे का tyre भी फट गया है। गाड़ी एक... inch pitch, 1 inch भी नहीं ले रही, सड़क के बीच में खड़ी है। crane बिछानी पड़ेगी।"
+}

@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b5ff-c611-74ba-89a8-db5484d36606",
+  "transcript": "Sir, गाड़ी का engine अचानक बंद हो गया है और आगे का tyre भी फट गया है। गाड़ी बीच गाड़ी 1 inch भी नहीं हिल रही, सड़क के बीच में खड़ी है। crane भिजवानी पड़ेगी।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.560021162033081,
+  "end_to_end_latency": 0.5611944198608398,
+  "detected_language_code": "hi-IN"
+}

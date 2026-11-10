@@ -1,0 +1,20 @@
+{
+  "vehicle_drivable": "TRUE",
+  "vehicle_drivable_evidence": "चल रही है",
+  "towing_required": "UNKNOWN",
+  "towing_evidence": "",
+  "damage_zones": [
+    {
+      "zone": "Front Bumper / Bonnet",
+      "evidence": "bonnet दब गया है"
+    }
+  ],
+  "third_party_or_injury": "TRUE",
+  "third_party_evidence": "दूसरी गाड़ी वाली। को चोट लगी है",
+  "timings": {
+    "stt_seconds": 0.369,
+    "llm_seconds": 1.228,
+    "total_seconds": 1.597
+  },
+  "transcript": "Sir, गाड़ी का engine ठीक है, चल रही है, सिर्फ bonnet दब गया है दूसरी गाड़ी वाली। को चोट लगी है, ambulance बुलवा दीजिए।"
+}

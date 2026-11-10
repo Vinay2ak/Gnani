@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b5ff-186d-714e-afec-42199e2eceaa",
+  "transcript": "Hello sir, मेरी गाड़ी का accident हो गया है। highway पे divider से टकरा गई, radiator फट गया है और पानी बह रहा है। tyre road भी मुर गया है, गाड़ी बिल्कुल start नहीं हो रही, चलने लायक नहीं है। तो करनी पड़ेगी, जल्दी कोई भेजिए।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.5519623756408691,
+  "end_to_end_latency": 0.5531215667724609,
+  "detected_language_code": "hi-IN"
+}

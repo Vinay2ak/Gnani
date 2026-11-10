@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "request_id": "01a1b5fe-b91b-7d57-a4f7-91814251593e",
+  "transcript": "सर, छोटा सा accident हुआ है। bumper और head light टूट गया है, टूट गए हैं, लेकिन गाड़ी बिल्कुल ठीक है। चल रही है, radiator को कुछ नहीं हुआ। मैं खुद चला के workshop ले जाऊँगा तो। की जरूरत नहीं, कोई दूसरी गाड़ी involve involve involve नहीं थी और किसी को चोट नहीं लगी।",
+  "model": "prisma-v3.0",
+  "processing_time": 0.5975165367126465,
+  "end_to_end_latency": 0.5988507270812988,
+  "detected_language_code": "hi-IN"
+}
