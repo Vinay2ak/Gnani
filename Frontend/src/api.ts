@@ -61,8 +61,9 @@ export async function approveClaim(claimId: string): Promise<Claim> {
   return res.json();
 }
 
-export async function fetchReadbackAudio(claimId: string): Promise<Blob> {
-  const res = await fetch(`${API_BASE}/claims/${encodeURIComponent(claimId)}/readback`, {
+export async function fetchReadbackAudio(claimId: string, voice: string = 'Nalini'): Promise<Blob> {
+  const url = `${API_BASE}/claims/${encodeURIComponent(claimId)}/readback?voice=${encodeURIComponent(voice)}`;
+  const res = await fetch(url, {
     method: 'POST',
   });
 
@@ -81,3 +82,4 @@ export async function fetchReadbackAudio(claimId: string): Promise<Blob> {
 
   return res.blob();
 }
+

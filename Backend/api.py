@@ -206,16 +206,18 @@ def approve_claim(claim_id: str):
     return claim
 
 @app.post("/claims/{claim_id}/readback")
-def readback_claim(claim_id: str):
+def readback_claim(claim_id: str, voice: Optional[str] = "Nalini"):
     """Generate or serve cached Hindi-English audio confirmation for the claim."""
     if claim_id not in claims_db:
         raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found")
 
-    cache_file = Path("readback") / f"{claim_id}.wav"
+    selected_voice = "Deepak" if voice and voice.strip().lower() in ["deepak", "male", "man", "purush"] else "Nalini"
+    voice_slug = selected_voice.lower()
+    cache_file = Path("readback") / f"{claim_id}_{voice_slug}.wav"
 
     # Return cached audio if available
     if cache_file.exists() and cache_file.stat().st_size > 0:
-        return FileResponse(cache_file, media_type="audio/wav", filename=f"{claim_id}_readback.wav")
+        return FileResponse(cache_file, media_type="audio/wav", filename=f"{claim_id}_readback_{voice_slug}.wav")
 
     # Generate read-back text
     claim = claims_db[claim_id]
@@ -223,11 +225,11 @@ def readback_claim(claim_id: str):
 
     # Call Gnani Timbre TTS
     try:
-        synthesize_readback(readback_text, cache_file)
+        synthesize_readback(readback_text, cache_file, voice=selected_voice)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"TTS synthesis error: {str(e)[:200]}")
 
-    return FileResponse(cache_file, media_type="audio/wav", filename=f"{claim_id}_readback.wav")
+    return FileResponse(cache_file, media_type="audio/wav", filename=f"{claim_id}_readback_{voice_slug}.wav")
 
 if __name__ == "__main__":
     import uvicorn

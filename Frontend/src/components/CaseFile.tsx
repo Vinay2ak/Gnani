@@ -15,22 +15,27 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
   const [isApproving, setIsApproving] = useState<boolean>(false);
   const [isLoadingAudio, setIsLoadingAudio] = useState<boolean>(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
+  const [selectedVoice, setSelectedVoice] = useState<'Nalini' | 'Deepak'>('Nalini');
   const [actionError, setActionError] = useState<string | null>(null);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioUrlRef = useRef<string | null>(null);
+  const audioUrlRef = useRef<Record<string, string>>({});
 
-  // Cleanup audio url on unmount or claim switch
+  // Cleanup audio urls on unmount or claim switch
   useEffect(() => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
-      if (audioUrlRef.current) {
-        URL.revokeObjectURL(audioUrlRef.current);
-        audioUrlRef.current = null;
-      }
+      Object.values(audioUrlRef.current).forEach((url) => {
+        try {
+          URL.revokeObjectURL(url);
+        } catch {
+          // Ignore
+        }
+      });
+      audioUrlRef.current = {};
     };
   }, [claim.id]);
 
@@ -79,11 +84,25 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
       return;
     }
 
-    // Replay cached audio if already fetched
-    if (audioRef.current && audioUrlRef.current) {
+    // Replay cached audio if already fetched for selected voice
+    const cachedUrl = audioUrlRef.current[selectedVoice];
+    if (cachedUrl) {
       try {
-        audioRef.current.currentTime = 0;
-        await audioRef.current.play();
+        if (audioRef.current) {
+          audioRef.current.pause();
+        }
+        const audio = new Audio(cachedUrl);
+        audioRef.current = audio;
+
+        audio.onended = () => {
+          setIsPlayingAudio(false);
+        };
+        audio.onerror = () => {
+          setIsPlayingAudio(false);
+          setActionError('Failed to playback audio confirmation');
+        };
+
+        await audio.play();
         setIsPlayingAudio(true);
         return;
       } catch (e) {
@@ -93,10 +112,13 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
 
     try {
       setIsLoadingAudio(true);
-      const blob = await fetchReadbackAudio(claim.id);
+      const blob = await fetchReadbackAudio(claim.id, selectedVoice);
       const url = URL.createObjectURL(blob);
-      audioUrlRef.current = url;
+      audioUrlRef.current[selectedVoice] = url;
 
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
       const audio = new Audio(url);
       audioRef.current = audio;
 
@@ -263,6 +285,29 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
           </div>
         )}
 
+        <div className="flex items-center gap-2 border border-line bg-surface rounded-[4px] px-2.5 py-1 text-[13px]">
+          <span className="text-muted text-[12px] font-medium">Voice:</span>
+          <select
+            value={selectedVoice}
+            onChange={(e) => {
+              const nextVoice = e.target.value as 'Nalini' | 'Deepak';
+              if (isPlayingAudio && audioRef.current) {
+                audioRef.current.pause();
+                setIsPlayingAudio(false);
+              }
+              setSelectedVoice(nextVoice);
+            }}
+            className="bg-transparent text-text font-medium text-[12px] cursor-pointer outline-none border-none py-0.5"
+          >
+            <option value="Nalini" className="bg-surface text-text">
+              Female (Nalini)
+            </option>
+            <option value="Deepak" className="bg-surface text-text">
+              Male (Deepak)
+            </option>
+          </select>
+        </div>
+
         <button
           type="button"
           onClick={handlePlayReadback}
@@ -270,10 +315,10 @@ export const CaseFile: React.FC<CaseFileProps> = ({ claim, onClaimUpdated }) => 
           className="border border-line bg-surface hover:bg-panel text-text font-medium text-[13px] py-1.5 px-3.5 rounded-[4px] cursor-pointer active:translate-y-[1px] disabled:opacity-40 disabled:cursor-not-allowed select-none"
         >
           {isLoadingAudio
-            ? 'Generating audio...'
+            ? `Generating ${selectedVoice === 'Deepak' ? 'Male' : 'Female'} audio...`
             : isPlayingAudio
             ? 'Stop read-back'
-            : 'Play read-back'}
+            : `Play read-back (${selectedVoice === 'Deepak' ? 'Male' : 'Female'})`}
         </button>
       </section>
     </article>

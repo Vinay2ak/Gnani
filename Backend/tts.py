@@ -45,7 +45,7 @@ def generate_readback_sentence(fnol: dict) -> str:
     parts.append("Surveyor aapse jald hi sampark karenge.")
     return " ".join(parts)
 
-def synthesize_readback(text: str, output_path: str | Path) -> Path:
+def synthesize_readback(text: str, output_path: str | Path, voice: str = "Nalini") -> Path:
     """Synthesize text into WAV audio using Gnani Timbre TTS (timbre-v2.5) with disk cache."""
     out = Path(output_path)
     # Check cache first: never call API twice for the same clip
@@ -64,7 +64,7 @@ def synthesize_readback(text: str, output_path: str | Path) -> Path:
     payload = {
         "text": text,
         "model": "timbre-v2.5",
-        "voice": "Nalini",
+        "voice": voice,
         "language": "hi-IN",
         "speed": 1.0,
         "audio_config": {
