@@ -3,39 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --bg: #1A1A1F;
-  --surface: #22222B;
-  --line: #3A3A4A;
+  color-scheme: dark;
+  --bg: #17171C;
+  --s1: #1E1E25;
+  --s2: #26262F;
+  --hair: rgba(240, 217, 181, 0.10);
+  --text: #F0D9B5;
   --muted: #B3AEC2;
   --panel: #2D2B55;
-  --text: #F0D9B5;
   --accent: #F4A62A;
-  --link: #6A5ACD;
-  --tag: #A678B9;
+  --on-accent: #1A1A1F;
+  --link: #8F82E6;
+  --tag: #C79BD6;
+  --tag-text: #D9B4E6;
+  --hl: rgba(244, 166, 42, 0.24);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #17171C;
+  --s1: #1E1E25;
+  --s2: #26262F;
+  --hair: rgba(240, 217, 181, 0.10);
+  --text: #F0D9B5;
+  --muted: #B3AEC2;
+  --panel: #2D2B55;
+  --accent: #F4A62A;
+  --on-accent: #1A1A1F;
+  --link: #8F82E6;
+  --tag: #C79BD6;
+  --tag-text: #D9B4E6;
+  --hl: rgba(244, 166, 42, 0.24);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F6F1E7;
+  --s1: #FFFFFF;
+  --s2: #F1EBDD;
+  --hair: rgba(26, 26, 31, 0.10);
+  --text: #1A1A1F;
+  --muted: #5C5870;
+  --panel: #E9E1F5;
+  --accent: #F4A62A;
+  --on-accent: #1A1A1F;
+  --link: #4B3FB0;
+  --tag: #6B3F7E;
+  --tag-text: #6B3F7E;
+  --hl: rgba(244, 166, 42, 0.35);
 }
 
 body {
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
 }
 
-/* Ensure flat surfaces and 150ms transitions */
+/* Devanagari font stack for Hindi transcript & quotes */
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', 'Instrument Sans', system-ui, sans-serif;
+}
+
+/* Tabular nums on timings, stats and counts */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Native select and options */
+select,
+option {
+  background-color: var(--s2);
+  color: var(--text);
+}
+
+/* Strict flat depth, no shadows */
 * {
   box-shadow: none !important;
-  transition-property: color, background-color, border-color, transform;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
+}
+
+/* 150ms transitions */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: color, background-color, border-color;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
 
 /* Accessible focus ring */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-a:focus-visible {
+a:focus-visible,
+label:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 2px;
 }

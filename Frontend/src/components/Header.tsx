@@ -1,39 +1,37 @@
 import React from 'react';
-
-export type ConnectionStatus = 'connected' | 'disconnected' | 'connecting';
+import { ThemeSwitch } from './ThemeSwitch';
 
 interface HeaderProps {
-  connectionStatus: ConnectionStatus;
+  apiConnected: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ connectionStatus }) => {
+export const Header: React.FC<HeaderProps> = ({ apiConnected }) => {
   return (
     <header className="border-b border-line bg-surface sticky top-0 z-30">
-      <div className="max-w-[1100px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-[1100px] mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
         <div className="flex items-baseline gap-2.5">
-          <span className="text-[17px] font-semibold text-text tracking-tight">
+          <span className="text-[16px] font-semibold text-text tracking-tight">
             Bima-Setu
           </span>
           <span className="text-[13px] text-muted">
-            FNOL intake console
+            Claims intake
           </span>
         </div>
-        <div className="flex items-center text-[13px]">
-          {connectionStatus === 'connected' && (
-            <span className="text-[#48BB78] font-mono text-[12px] font-medium tracking-tight">
-              Connected
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 text-[12px] font-mono">
+            <span
+              className={`w-2 h-2 rounded-full ${
+                apiConnected ? 'bg-[#48BB78]' : 'bg-[#E53E3E]'
+              }`}
+              aria-hidden="true"
+            />
+            <span className="text-muted">
+              {apiConnected ? 'API connected' : 'API offline'}
             </span>
-          )}
-          {connectionStatus === 'disconnected' && (
-            <span className="text-[#FC8181] font-mono text-[12px] font-medium tracking-tight">
-              Not connected
-            </span>
-          )}
-          {connectionStatus === 'connecting' && (
-            <span className="text-muted font-mono text-[12px] tracking-tight">
-              Connecting...
-            </span>
-          )}
+          </div>
+
+          <ThemeSwitch />
         </div>
       </div>
     </header>

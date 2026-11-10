@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Claim } from './types';
 import { fetchClaims, uploadClaim } from './api';
-import { Header, ConnectionStatus } from './components/Header';
-import { IntakePanel } from './components/IntakePanel';
-import { ClaimCard } from './components/ClaimCard';
+import { Header } from './components/Header';
+import { IntakeRow } from './components/IntakeRow';
+import { ClaimsQueue } from './components/ClaimsQueue';
+import { CaseFile } from './components/CaseFile';
 
 export const App: React.FC = () => {
   const [claims, setClaims] = useState<Claim[]>([]);
-  const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>('connecting');
+  const [selectedClaimId, setSelectedClaimId] = useState<string | null>(null);
+  const [apiConnected, setApiConnected] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // 3-second polling of GET /claims with responsive 2.5s abort timeout
+  // 3-second heartbeat polling of GET /claims
   useEffect(() => {
     let isMounted = true;
 
@@ -21,14 +23,24 @@ export const App: React.FC = () => {
         const timeoutId = setTimeout(() => controller.abort(), 2500);
         const data = await fetchClaims(controller.signal);
         clearTimeout(timeoutId);
+
         if (isMounted) {
-          // Present claims newest first
-          setClaims([...data].reverse());
-          setConnectionStatus('connected');
+          // Newest claims first
+          const reversed = [...data].reverse();
+          setClaims(reversed);
+          setApiConnected(true);
+
+          // Select newest claim by default if none selected or previous selection no longer exists
+          setSelectedClaimId((prev) => {
+            if (prev && reversed.some((c) => c.id === prev)) {
+              return prev;
+            }
+            return reversed.length > 0 ? reversed[0].id : null;
+          });
         }
       } catch {
         if (isMounted) {
-          setConnectionStatus('disconnected');
+          setApiConnected(false);
         }
       }
     };
@@ -48,6 +60,8 @@ export const App: React.FC = () => {
     try {
       const created = await uploadClaim(file, phone);
       setClaims((prev) => [created, ...prev]);
+      // Select the newly uploaded claim immediately
+      setSelectedClaimId(created.id);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Intake failed';
       setErrorMessage(msg);
@@ -61,49 +75,48 @@ export const App: React.FC = () => {
     setClaims((prev) => prev.map((c) => (c.id === updated.id ? updated : c)));
   };
 
+  const selectedClaim = claims.find((c) => c.id === selectedClaimId) || null;
+
   return (
-    <div className="min-h-screen bg-bg text-text">
-      <Header connectionStatus={connectionStatus} />
+    <div className="min-h-screen bg-bg text-text flex flex-col justify-between">
+      <div>
+        <Header apiConnected={apiConnected} />
+        <IntakeRow
+          onUpload={handleUpload}
+          isUploading={isUploading}
+          errorMessage={errorMessage}
+          onClearError={() => setErrorMessage(null)}
+        />
 
-      <main className="max-w-[1100px] mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
-          {/* Left Column: Intake Panel (sticky from 1024px) */}
-          <aside>
-            <IntakePanel
-              onUpload={handleUpload}
-              isUploading={isUploading}
-              errorMessage={errorMessage}
-              onClearError={() => setErrorMessage(null)}
-            />
-          </aside>
+        <main className="max-w-[1100px] mx-auto px-4 py-5">
+          <div className="border border-line rounded-[4px] bg-surface overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr]">
+              <ClaimsQueue
+                claims={claims}
+                selectedClaimId={selectedClaimId}
+                onSelectClaim={setSelectedClaimId}
+              />
 
-          {/* Right Column: Claim Queue */}
-          <section className="space-y-4">
-            <div className="flex items-center justify-between border-b border-line pb-2 mb-2">
-              <h1 className="text-[16px] font-semibold text-text tracking-tight">
-                Claim Queue
-              </h1>
-              <span className="font-mono text-[12px] text-muted">
-                {claims.length} {claims.length === 1 ? 'case' : 'cases'}
-              </span>
-            </div>
-
-            {claims.length === 0 ? (
-              <div className="py-12 text-center text-muted text-[13px]">
-                No claims submitted yet.
+              <div className="min-h-[500px]">
+                {selectedClaim ? (
+                  <CaseFile
+                    claim={selectedClaim}
+                    onClaimUpdated={handleClaimUpdated}
+                  />
+                ) : (
+                  <div className="p-12 text-center text-muted text-[13px]">
+                    No claims submitted yet. Use the intake row above to start.
+                  </div>
+                )}
               </div>
-            ) : (
-              claims.map((claim) => (
-                <ClaimCard
-                  key={claim.id}
-                  claim={claim}
-                  onClaimUpdated={handleClaimUpdated}
-                />
-              ))
-            )}
-          </section>
-        </div>
-      </main>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <footer className="border-t border-line/60 bg-surface/40 py-3 text-center text-[12px] text-muted">
+        Synthetic demo data. A human adjuster approves every claim.
+      </footer>
     </div>
   );
 };

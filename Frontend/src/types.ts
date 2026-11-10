@@ -1,5 +1,7 @@
 export type TriState = 'TRUE' | 'FALSE' | 'UNKNOWN';
 
+export type ThemeMode = 'light' | 'dark' | 'system';
+
 export interface DamageZone {
   zone: string;
   evidence: string;
@@ -41,4 +43,3 @@ export interface Claim {
   workshop?: string | null;
   audio_path?: string;
 }
-
