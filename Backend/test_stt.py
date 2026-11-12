@@ -3,14 +3,14 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
-KEY = os.environ.get("GNANI_API_KEY", "")
+KEY = os.environ.get("GNANI_API_KEY", "").strip()
 
 def transcribe(path, model, lang="hi-IN"):
     out = Path("transcripts") / f"{Path(path).stem}.{model}.json"
     if out.exists():
         return json.loads(out.read_text(encoding="utf-8"))
     
-    key = os.environ.get("GNANI_API_KEY", KEY)
+    key = os.environ.get("GNANI_API_KEY", KEY).strip()
     if not key:
         raise ValueError("GNANI_API_KEY environment variable is not set")
     
@@ -20,7 +20,7 @@ def transcribe(path, model, lang="hi-IN"):
     with open(path, "rb") as f:
         r = requests.post(
             "https://api.vachana.ai/stt/v3",
-            headers={"X-API-Key-ID": KEY},
+            headers={"X-API-Key-ID": key},
             files={"audio_file": (Path(path).name, f)},
             data=data, timeout=60,
         )
